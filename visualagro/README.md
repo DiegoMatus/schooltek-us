@@ -1,2 +1,0 @@
-# visualagro
-Sitio de Visualagro

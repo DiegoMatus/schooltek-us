@@ -1,0 +1,395 @@
+/*
+  @media-querys
+*/
+
+@media only screen and (max-width: 768px) {
+  .footer-center {
+    text-align: center;
+    padding-bottom: 20px;
+  }
+
+  #main-slider .slider-inner h2 {
+    margin-top: 100px;
+    font-size: 48px;
+    text-align: center;
+  }
+
+  .btn-schooltek {
+    float: none;
+    width: 80%;
+    margin: 0 10%;
+    text-align: center;
+    font-size: 32px !important;
+    line-height: 32px;
+  }
+
+  .btn-schooltek > span {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .footer-section {
+    text-align: center;
+  }
+
+  .footer-section > div {
+    margin-bottom: 15px;
+  }
+
+  #main-slider .item {
+    min-height: 490px;
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    background-size: cover;
+  }
+
+  .apps {
+    position: relative;
+    top: 445px;
+    height: 50px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .col-md-4 > img {
+    margin: 0;
+  }
+
+  .icon-service {
+    margin: 15% 0 !important;
+  }
+
+  #information1-slider .slider-inner h2 {
+    top: 120px !important;
+    font-size: 42px;
+    text-align: center;
+  }
+
+  #information1-slider  img {
+    position: relative;
+    top: 120px;
+    padding: 0;
+    margin: 0;
+    width: 90%;
+    margin-left: 5%;
+  }  
+
+  #information2-slider .slider-inner h2 {
+    top: 120px !important;
+    font-size: 42px;
+    text-align: center;
+  }
+
+  #information2-slider  img {
+    position: relative;
+    top: 140px;
+    padding: 0;
+    margin-left: 10%;
+    width: 80%;
+  }  
+
+  #information1-slider .item, #information2-slider .item {
+    min-height: 420px;
+  }
+
+  #applestore, #playstore {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  #map {
+    margin-top: -50px;
+  }
+
+  #map-slider .item {
+    height: 300px;
+    background-position: 50% 0;
+    background-size: 120%;
+  }
+
+  .question-menu-item {
+    width: 48%;
+  }
+
+  .question-menu-item:hover {
+    width: 52%;
+    border-bottom: 3px solid #29abe2;
+  }
+
+
+}
+
+@media only screen and (max-width: 768px) and (orientation: landscape) {
+  #main-slider .slider-inner h2 {
+    font-size: 44px;
+  }
+
+  #main-slider .item {
+    min-height: 350px;
+  }
+
+  .apps {
+    position: relative;
+    top: 270px;
+    height: 50px;
+    margin: 0;
+    padding: 0;
+  }
+
+.col-md-4 > img {
+    margin: 0;
+  }
+
+  .icon-service {
+    margin: 15% 0 !important;
+  }
+
+  #information1-slider .item,   #information2-slider .item {
+    min-height: 520px;
+  }
+
+  #information2-slider .slider-inner h2, #information1-slider .slider-inner h2 {
+    font-size: 40px;
+  }
+
+  #information2-slider  img {
+    position: relative;
+    top: 130px;
+    padding: 0;
+    margin-left: 15%;
+    width: 70%;
+  } 
+
+  #applestore, #playstore {
+    margin-left: 0;
+    width: 80%;
+  }
+
+  #map {
+    margin-top: -50px;
+  }
+
+  #map-slider .item {
+    height: 500px;
+    background-position: 50% 0;
+    background-size: 110%;
+  }
+
+}
+
+@media only screen and  (min-width: 769px) and (max-width: 960px) {
+  .container-close {
+    padding: 0 !important;
+  }
+
+  #main-slider .slider-inner h2 {
+    margin-top: 150px;
+    font-size: 48px;
+  }
+
+  .btn-schooltek {
+    font-size: 36px !important;
+    line-height: 36px;
+  }
+
+  .btn-schooltek > span {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .apps {
+    position: relative;
+    top: 380px;
+    height: 50px;
+    margin: 0;
+    padding: 0;
+  }
+
+  #main-slider .item {
+    min-height: 435px !important;
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    background-size: cover;
+  }
+  #information1-slider .slider-inner h2 {
+    top: 100px !important;
+    font-size: 32px;
+    text-align: center;
+  }
+
+  #information1-slider  img {
+    position: relative;
+    top: 100px;
+    padding: 0;
+    margin: 0;
+    width: 60%;
+    margin-left: 20%;
+  }  
+
+  #information2-slider .slider-inner h2 {
+    top: 100px !important;
+    font-size: 32px;
+    text-align: center;
+  }
+
+  #information2-slider  img {
+    position: relative;
+    top: 120px;
+    padding: 0;
+    margin-left: 25%;
+    width: 50%;
+  } 
+
+  #map {
+    margin-top: -50px;
+  }
+
+  #map-slider .item {
+    height: 500px;
+    background-position: 50% 0;
+    background-size: 90%;
+  }  
+}
+
+@media only screen and  (min-width: 961px) and (max-width: 1139px) {
+  .container-close {
+    padding: 0 !important;
+  }
+
+  #main-slider .slider-inner h2 {
+    margin-top: 150px;
+    font-size: 54px;
+  }
+
+  .btn-schooltek {
+    font-size: 38px !important;
+    line-height: 38px;
+  }
+
+  .btn-schooltek > span {
+    font-size: 28px;
+  }
+
+  .apps {
+    position: relative;
+    top: 385px;
+    height: 50px;
+    margin: 0;
+    padding: 0;
+  }
+
+  #main-slider .item {
+    min-height: 435px !important;
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    background-size: cover;
+  }
+
+  #information1-slider .slider-inner h2 {
+    top: 380px !important;
+    font-size: 42px;
+  }
+
+  #information1-slider  img {
+    position: relative;
+    top: 240px;
+  }
+
+  #information2-slider .slider-inner h2 {
+    position: relative;
+    top: 360px;
+  }
+
+  #information2-slider  img {
+    position: relative;
+    top: 225px;
+    width: 100%;
+  } 
+
+
+
+  #map-slider .item {
+    height: 500px;
+    background-size: 90%;
+  }
+}
+
+@media only screen and (min-width: 1480px){
+  .container-close {
+    padding: 0 5% !important;
+  }
+  .btn-schooltek {
+    background-color: #F37D1C !important; /*6cb670*/
+    border-bottom: 1px solid #F37D1C !important; /*70C080*/
+    float: right;
+    padding-top: 25px;
+  }
+
+  .btn-schooltek > span {
+    font-size: 38px;
+    font-weight: bold;
+  }
+
+  #main-slider .slider-inner h2 {
+    margin-top: 220px;
+    font-size: 76px;
+  }
+
+  #main-slider .item {
+    min-height: 700px;
+  }
+
+  .apps {
+    position: relative;
+    top: 600px;
+    height: 50px;
+    margin: 0;
+    padding: 0;
+  }
+
+  #map-slider .item {
+    height: 600px;
+    background-size: 65%;
+  }
+
+  #map-title {
+    margin-top: -7.5%;
+  }
+
+ #information1-slider .slider-inner h2 {
+    top: 340px;
+    font-size: 68px;
+    margin-left: -20%;
+
+ #information1-slider .slider-inner img {
+    top: 190px;
+ }
+
+ #information2-slider .slider-inner h2 {
+    top: 340px;
+    font-size: 80px;
+ }
+
+/*
+  #information1-slider .item {
+    background-image: url(../images/slider/information5.jpg);
+  }
+*/
+  #information2-slider .item {
+    background-image: url(../images/slider/information2-2.jpg);
+  }
+
+  #information2-slider img, #information1-slider img {
+    margin-right: -100px !important;
+  }
+
+  #map-slider .item {
+    height: 650px;
+    width: 95%;
+  }
+
+  #faq-slider .item {
+    background-image: url(../images/slider/faq2.jpg);
+  }
+  
+}

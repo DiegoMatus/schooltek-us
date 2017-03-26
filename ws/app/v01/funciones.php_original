@@ -1,0 +1,32 @@
+<?php
+
+	function login($usuario,$password,$centeduc){
+		include('connectdblogin.php');
+
+		$query = "SELECT COUNT(*) AS login 
+					FROM GCSUSUARIO U 
+					INNER JOIN GCBDBACCESS A ON U.FKidDBAccess = A.idDBAccess
+					WHERE U.sCuenta='".$usuario."' AND U.sContraseniaTmp='".$password."' AND A.sIDColegio='".$centeduc."'";
+		$sqlcode = mysql_query($query,$cnnDBLOGIN);
+		$rows = mysql_num_rows($sqlcode);
+		mysql_close($cnnDBLOGIN);
+		if ($rows >= 1) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+
+	function br2nl($text) {
+ 		return preg_replace('/<br(\s+)?\/?>/i', "\n", $text);
+	}
+
+
+	function cleanText($text) {
+		$text = preg_replace('/<br(\s+)?\/?>/i', "\n", $text);
+ 		$text = preg_replace('/&nbsp;/', " ", $text);
+ 		return $text;
+	}
+
+?>

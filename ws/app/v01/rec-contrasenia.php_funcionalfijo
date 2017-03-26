@@ -1,0 +1,25 @@
+<?php header('Content-type: application/json; charset=utf-8');
+
+	if ((isset($_GET['usr'])) && (isset($_GET['ce']))) {
+		$usr = $_GET['usr'];
+		$ce = $_GET['ce'];
+		
+		if($usr =="chama20041988@tutor.mx" && $ce =="DVLP-MX")
+		{
+			//Estos datos correctos
+			echo '{"password":"S","estado":"1","mensaje":"Se ha enviado un correo con su nueva contraseña de acceso a Schooltek."}';
+		}else{
+			//Estos datos sin permisos
+			if($usr =="hernandez01041990@tutor.mx" && $ce =="DVLP-MX"){
+				echo '{"password":"N","estado":"2","mensaje":"Aún no se ha activado su cuenta, contacte al administrador de su Colegio."}';
+			}else{
+				//Todo lo demás no existe
+				echo '{"password":"N","estado":"0","mensaje":"El Usuario o Colegio no existe, revise que sus datos estén escritos correctamente."}';
+			}
+		}
+	}else{
+		// Falta alguno de los parámetros
+		echo '{"password":"N"}';
+	}
+
+?>

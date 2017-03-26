@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Schooltek | Be a partner</title>
+	<!-- core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/owl.carousel.css" rel="stylesheet">
+    <link href="css/owl.transitions.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+    
+    <link rel="shortcut icon" href="images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+
+    <script src="js/angular.min.js"></script>
+</head><!--/head-->
+
+<body id="home">
+
+    <header id="header" ng-include="'header.html'"></header><!--/header-->
+
+    <section id="partners">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title text-center wow fadeInDown">Become a Partner</h2>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-5 col-sm-offset-1">
+                    <h2 class="text-left wow fadeInDown">Why do we offer a partner program?</h2>
+                    <h4>Our solution:</h4>
+                    <ul>
+                        <li>Provides great benefits and value to schools</li>
+                        <li>It has an attractive licensing model</li>
+                        <li>Can be deployed in minutes.</li>
+                        <li>Are simple to use.</li>
+                    </ul>
+
+                    <p>The sheer size of the market opportunity and the popularity of our solution have led us to create our partner program.</p>
+                    <h2>What are the advantages of becoming a partner?</h2>
+                    <h4>Our partners:</h4>
+                    <ul>
+                        <li>Have access to new opportunities.</li>
+                        <li>Extend their competitive advantage.</li>
+                    </ul>
+                    <h4>In addition, our partners benefit from:</h4>
+                    <ul>
+                        <li>Access to our partner portal.</li>
+                        <li>Technical and Sales training.</li>
+                        <li>Sales and Marketing material</li>
+                        <li>Use of our partner program logo</li>
+                        <li>Priority access to our solutions roadmaps and new features</li>
+                    </ul>
+                    <h4>For whom?</h4>
+                    <p>Our partner program is particularly suitable for any:</p>
+                    <ul>
+                        <li>Distributor or retailer</li>
+                        <li>Independent Partner</li>
+                    </ul>
+                </div>
+                    
+                <div class="col-xs-12 col-sm-5">
+                    <div class="contact-form">
+                        <form id="partner-contact-form" name="contact-form" method="post" action="partnermail.php">
+                            <div class="form-group">
+                                <label for="name">Name<span>*</span></label>
+                                <input type="text" name="name" class="form-control" placeholder="Your name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email<span>*</span></label>
+                                <input type="email" name="email" class="form-control" placeholder="email@example.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone<span>*</span></label>
+                                <input type="tel" name="phone" class="form-control" placeholder="Phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="rfc">ID<span>*</span></label>
+                                <input type="text" name="id" class="form-control" placeholder="ID" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="city">City<span>*</span></label>
+                                <input type="text" name="city" class="form-control" placeholder="City" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="state">State<span>*</span></label>
+                                <input type="text" name="state" class="form-control" placeholder="State" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="zip">ZIP<span>*</span></label>
+                                <input type="text" name="zip" class="form-control" placeholder="ZIP" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="Company">Company<span>*</span></label>
+                                <input type="text" name="company" class="form-control" placeholder="Company" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="which">Which it aims to bring towns Schooltek:</label>
+                                <textarea name="which" class="form-control" rows="2"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Describe as trying to attract customers:</label>
+                                <textarea name="description" class="form-control" rows="2"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="giro">Giro de la empresa<span>*</span></label> </br>
+                                <input type="radio" name="giro" value="tour">Tour of the company </br>
+                                <input type="radio" name="giro" value="book">Bookselling </br>
+                                <input type="radio" name="giro" value="soft">Software sales </br>
+                                <input type="radio" name="giro" value="educ">Educational Consulting </br>
+                                <input type="radio" name="giro" value="other">Other </br>
+                            </div> 
+                            <div class="form-group">
+                                <label for="comments">Comments</label>
+                                <textarea name="comments" class="form-control" rows="2"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer" ng-include="'footer.html'"></footer><!--/#footer-->
+
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/mousescroll.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

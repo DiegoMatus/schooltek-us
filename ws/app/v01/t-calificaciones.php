@@ -1,0 +1,134 @@
+<?php header('cnnDBCUSTOMtent-type: application/json; charset=utf-8');
+
+	if ((isset($_GET['usr'])) && (isset($_GET['pwd'])) && (isset($_GET['ce'])) && (isset($_GET['alm'])) && (isset($_GET['op']))) {
+		include('funciones.php');
+		require_once 'general.php';
+		$usr = $_GET['usr'];
+		$pwd = $_GET['pwd'];
+		$ce = $_GET['ce'];
+		$alm = $_GET['alm'];
+		$op = $_GET['op'];
+		$error = false;
+		if ($op=="det" || $op=="res") {
+			if ((isset($_GET['id']))){
+				$id=$_GET['id'];
+				if ($op=="res") {
+					if ((isset($_GET['r']))){
+						$r=$_GET['r'];
+					}else{
+						$error = true;
+					}
+				}
+			}else{
+				$error = true;
+			}
+		}
+		if (!$error){
+			$logueado = login($usr,$pwd,$ce);
+			if ($logueado) {
+				include('connectdbcustom.php');
+				include('funcionesdb.php');
+				$row_array = array();
+				$close_cnn = false;
+				switch ($op){						
+					case "gen" :
+						saveOptionT($cnnDBCUSTOM,$usr,"Q","T");
+						$query = "SELECT DISTINCT(E.idPeriEval) Id, E.sDPeriEval Periodo, CONCAT('Del ',DATE_FORMAT(E.dInicio,'%d/%m/%Y'),' al ', DATE_FORMAT(E.dFin,'%d/%m/%Y')) Fecha, 'M' cTipo
+									FROM PCSUSUARIO U 
+									INNER JOIN PCRALUMTUTO R ON U.FKidTutor=R.FKidTutor  
+									INNER JOIN PCBALUMNO A ON R.FKidAlumno=A.idAlumno 
+									INNER JOIN PCBCALIFICACION C ON C.FKidAlumno=A.idAlumno
+									INNER JOIN PCVPERIEVAL E ON E.idPeriEval=C.FKidPeriEval
+									WHERE U.sCuenta='".$usr."' AND E.cIndActivo='S' 
+									UNION
+									SELECT DISTINCT(E.idPeriEval) Id, E.sDPeriEval Periodo, CONCAT('Del ',DATE_FORMAT(E.dInicio,'%d/%m/%Y'),' al ', DATE_FORMAT(E.dFin,'%d/%m/%Y')) Fecha, 'C' cTipo
+									FROM PCSUSUARIO U 
+									INNER JOIN PCRALUMTUTO R ON U.FKidTutor=R.FKidTutor  
+									INNER JOIN PCBALUMNO A ON R.FKidAlumno=A.idAlumno 
+									INNER JOIN PCBCAMPOFOR C ON C.FKidAlumno=A.idAlumno
+									INNER JOIN PCVPERIEVAL E ON E.idPeriEval=C.FKidPeriEval
+									WHERE U.sCuenta='".$usr."' AND E.cIndActivo='S' 
+									";
+						$sqlcode = mysql_query($query,$cnnDBCUSTOM);
+						while ($row = mysql_fetch_array($sqlcode)) {
+							$r = new stdClass();
+							$r->Id = $row["Id"];
+							$r->Periodo = $row["Periodo"];
+							$r->Fecha = $row["Fecha"];
+							$row_array[] = $r;
+						}
+						$params = array("login"=>"S", "periodos"=>$row_array);
+						$jsonStr = json_encode($params);
+						echo $jsonStr;
+						//echo '{"login":"S","periodos":[{"Id":"35","Periodo":"Primer Bimestre","Fecha":"Del 21/10/2014 al 28/10/2014"},{"Id":"36","Periodo":"Segundo Bimestre","Fecha":"Del 10/12/2014 al 17/12/2014"}]}';
+						$close_cnn = true;
+						break;
+
+					case "det" :
+						saveOptionT($cnnDBCUSTOM,$usr,"QD","T");
+						
+						$query = "SELECT E.idPeriEval Id, E.sDPeriEval Periodo, CONCAT('Del ',DATE_FORMAT(E.dInicio,'%d/%m/%Y'),' al ', DATE_FORMAT(E.dFin,'%d/%m/%Y')) Fecha,  CASE WHEN R.cTipoRespuesta IS NULL THEN '' ELSE R.cTipoRespuesta END Resp 
+										FROM PCVPERIEVAL E
+										LEFT JOIN PARRESPAPP R ON R.FKidCalificacion=E.idPeriEval OR R.FKidCampoFor=E.idPeriEval
+										WHERE  E.idPeriEval='".$id."'";
+						$sqlcode = mysql_query($query,$cnnDBCUSTOM);
+						$row = mysql_fetch_array($sqlcode);
+						
+						$query = "SELECT DISTINCT M.sDCMateria Materia, C.sCalificacion Calif
+									FROM PCSUSUARIO U 
+									INNER JOIN PCRALUMTUTO R ON U.FKidTutor=R.FKidTutor 
+									INNER JOIN PCBALUMNO A ON R.FKidAlumno=A.idAlumno 
+									INNER JOIN PCBCALIFICACION C ON C.FKidAlumno=A.idAlumno
+									INNER JOIN PCVMATERIA M ON M.idMateria=C.FKidMateria
+									INNER JOIN PCVPERIEVAL E ON E.idPeriEval=C.FKidPeriEval
+									WHERE U.sCuenta='".$usr."'AND E.idPeriEval='".$id."'
+									UNION 
+									SELECT Materia, Calif
+									FROM (SELECT DISTINCT M.sDCampoFor Materia, group_concat(CONCAT(sDAspecto, ' <p>')) Calif 
+									FROM PCSUSUARIO U 
+									INNER JOIN PCRALUMTUTO R ON U.FKidTutor=R.FKidTutor 
+									INNER JOIN PCBALUMNO A ON R.FKidAlumno=A.idAlumno 
+									INNER JOIN PCBCAMPOFOR C ON C.FKidAlumno=A.idAlumno
+									INNER JOIN PCVCAMPOFOR M ON M.idCampoFor=C.FKidCampoFor
+									INNER JOIN PCRBCOMPETN CM ON CM.FKidCampoFor=C.idCampoFor
+                                    INNER JOIN PCRCOMPETN CR ON CR.idCompetn=CM.FKidCompetn    
+									INNER JOIN PCVPERIEVAL E ON E.idPeriEval=C.FKidPeriEval
+									WHERE U.sCuenta='".$usr."'AND E.idPeriEval='".$id."') AS CAMPO
+									WHERE Materia IS NOT NULL";
+						$sqlcode = mysql_query($query,$cnnDBCUSTOM);
+						while ($row1 = mysql_fetch_array($sqlcode)) {
+							$r = new stdClass();
+							$r->Id = $row["Id"];
+							$r->Materia = $row1["Materia"];
+							$r->Calif = $row1["Calif"];
+							//$r->Resp = $row["Resp"];
+							$row_array[] = $r;
+						}
+						$params = array("login"=>"S", "Id"=>$row["Id"], "Periodo"=>$row["Periodo"],  "Fecha"=>$row["Fecha"],"Resp"=>$row["Resp"], "calificaciones"=>$row_array);
+						$jsonStr = json_encode($params);
+						echo $jsonStr;
+						//echo '{"login":"S","id":"35","periodo":"Primer Bimestre","Fecha":"Del 21/10/2014 al 28/10/2014","calificaciones":[{"Materia":"Español","Calif":"10"},{"Materia":"Computación","Calif":"9.5"},{"Materia":"Matemáticas","Calif":"8.0"}]}';
+						$close_cnn = true;
+						break;
+
+					case "res" :
+						respApp($cnnDBCUSTOM,$usr, $id, $r, 't-calificaciones');
+						$close_cnn = true;
+						break;
+				}
+				if ($close_cnn) {
+					mysql_close($cnnDBCUSTOM);
+				}
+			}else{
+				echo '{"login":"N"}';
+			}
+		}else{
+			// Falta alguno de los parámetros
+			echo '{"login":"N"}';
+		}
+	}else{
+		// Falta alguno de los parámetros
+		echo '{"login":"N"}';
+	}
+
+?>

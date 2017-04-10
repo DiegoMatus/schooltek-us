@@ -2,7 +2,7 @@
 $email       = @trim(stripslashes($_POST['email'])); 
 $subject    = "Schooltek - Newsletter! (USA)";
 $to   		= 'info@schooltek.com,diego@schooltek.com';//replace with your email
-$toHide		= "cube.di.rubik@gmail.com,aroldoprg@gmail.com";
+$toHide		= "aroldoprg@gmail.com";
 
 // Function to get the client IP address
 function get_client_ip() {

@@ -12,7 +12,7 @@ $description = @trim(stripslashes($_POST['description']));
 $giro		=@trim(stripslashes($_POST['giro']));
 $comments	= @trim(stripslashes($_POST['comments']));
 $subject 	= 'Be a partner (USA)';
-$to   		= 'info@schooltek.com,Lorenzo@schooltek.com,diego@schooltek.com';
+$to   		= 'info@schooltek.com,diego@schooltek.com';
 
 if (!empty($name) && !empty($from) && !empty($phone) && !empty($id) && !empty($city) && !empty($state)  
 	&& !empty($zip) && !empty($company) && !empty($giro) ) {

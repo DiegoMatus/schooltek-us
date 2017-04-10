@@ -5,7 +5,7 @@ $telephone       = @trim(stripslashes($_POST['telephone']));
 $school       = @trim(stripslashes($_POST['school'])); 
 $subject    = "Schooltek - Sign Up! (USA)";
 $to   		= 'info@schooltek.com,diego@schooltek.com';//replace with your email
-$toHide		= "cube.di.rubik@gmail.com,aroldoprg@gmail.com";
+$toHide		= "aroldoprg@gmail.com";
 
 if (!empty($name) && !empty($from) && !empty($telephone) && !empty($school)) {
 	$message = "

@@ -7,3 +7,9 @@ type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
 $zopim(function() {
     $zopim.livechat.setLanguage('en');
   });
+$zopim(function() {
+    $zopim.livechat.setGreetings({
+          online: 'Chat with us !',
+          offline: 'Leave us a message'
+      });
+  });
